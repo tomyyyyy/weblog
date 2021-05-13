@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/static/css/index.css" />
+</head>
+
+<body>
+  <header>
+    <h1>web流量数据可视化实时监控系统</h1>
+    <div class="showTime">当前时间：<span></span></div>
+  </header>
+  <section class="mainbox">
+      <!--left-->
+    <div class="column">
+      <div class="panel bar">
+        <h2>
+          请求量最高的IP TOP50
+<!--          <a href="javascript:;">2019</a> <a href="javacript:;"> 2020</a>-->
+        </h2>
+        <div class="chart"></div>
+        <div class="panel-footer"></div>
+      </div>
+      <div class="panel line">
+        <h2>最近10分钟每分钟流量情况</h2>
+        <div class="chart"></div>
+        <div class="panel-footer"></div>
+      </div>
+      <div class="panel pie">
+        <h2>热门接口URL请求TOP 10</h2>
+        <div class="chart"></div>
+        <div class="panel-footer"></div>
+      </div>
+    </div>
+
+    <!--center-->
+    <div class="column">
+      <div class="no">
+        <div class="no-hd">
+          <ul>
+            <li class="total_ip"></li>
+            <li class="total_pv"></li>
+          </ul>
+        </div>
+        <div class="no-bd">
+          <ul>
+            <li>今日IP数</li>
+            <li>今日PV数</li>
+          </ul>
+        </div>
+      </div>
+      <div class="map">
+        <div class="chart"></div>
+        <div class="map1"></div>
+        <div class="map2"></div>
+        <div class="map3"></div>
+      </div>
+    </div>
+
+     <!--right-->
+    <div class="column">
+      <div class="panel bar1">
+        <h2>非200状态码</h2>
+        <div class="chart"></div>
+        <div class="panel-footer"></div>
+      </div>
+      <div class="panel member">
+        <h2>最近10分钟每分钟IP/PV</h2>
+        <div class="chart"></div>
+        <div class="panel-footer"></div>
+      </div>
+      <div class="panel pie1">
+        <h2>恶意ip占比</h2>
+        <div class="chart"></div>
+        <div class="panel-footer"></div>
+      </div>
+    </div>
+  </section>
+
+  <script src="/static/js/jquery-2.0.3.min.js"></script>
+  <script src="/static/js/geo.js"></script>
+  <script src="/static/js/config.js?random=666"></script>
+  <script src="/static/js/flexible.js"></script>
+  <script src="/static/js/echarts-4.9.0..min.js"></script>
+  <script src="/static/js/index.js"></script>
+  <script src="/static/js/china.js"></script>
+  <script src="/static/js/myMap.js"></script>
+  <script src="/static/js/timer.js?random=888"></script>
+
+  <script>
+
+    (function (fn) {
+      fn();
+      setInterval(fn, 1000);
+    })(function () {
+     var dt = new Date();
+      document.querySelector(".showTime span").innerHTML =
+        dt.getFullYear() + "年-" +
+        (dt.getMonth() + 1) + "月-" +
+        dt.getDate() + "日-" +
+        dt.getHours() + "时" +
+        dt.getMinutes() + "分" +
+        dt.getSeconds() + "秒";
+    });
+
+  </script>
+</body>
+
+</html>
