@@ -189,7 +189,7 @@ class MysqlDb():
             next_hour = int(time.mktime(time.strptime(next_hour_str, '%Y-%m-%d %H')))
 
             sql = text("""
-            select round((sum(bytes_sent) /1024),2)  as out_network, round((sum(request_length) / 1024) ,2) as in_network  ,unix_timestamp(STR_TO_DATE(time_str,'%Y-%m-%d %H:%i')) as time_str
+            select round((0 /1024),2)  as out_network, round((sum(body_bytes_sent) / 1024) ,2) as in_network  ,unix_timestamp(STR_TO_DATE(time_str,'%Y-%m-%d %H:%i')) as time_str
             from {0}
             where `timestamp` >= {1} and `timestamp` < {2}
             GROUP BY MINUTE(time_str)
