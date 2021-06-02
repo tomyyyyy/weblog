@@ -25,8 +25,8 @@ while 1:
     if res is None:
         break
     if re.search("GET|POST",res[3], re.IGNORECASE) == None:
+        pass
         # print (res[2],res[0],res[1])
-
 
 cur.execute("select ua from  " + table_name + ";")
 print("====================sql注入开始匹配==================")
