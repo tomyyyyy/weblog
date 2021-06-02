@@ -25,7 +25,7 @@ while 1:
     if res is None:
         break
     if re.search("GET|POST",res[3], re.IGNORECASE) == None:
-        print (res[2],res[0],res[1])
+        # print (res[2],res[0],res[1])
 
 
 cur.execute("select ua from  " + table_name + ";")
@@ -36,6 +36,7 @@ while 1:
         break
     if re.search("\{*.*?\}|>|<|\||and|or|1=1|information_schema|tables",res[1], re.IGNORECASE) != None:
         print (res[2],res[0],res[1])
+
 cur.close()
 conn.commit()
 conn.close()
