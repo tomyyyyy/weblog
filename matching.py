@@ -29,7 +29,7 @@ while 1:
         pass
         # print (res[2],res[0],res[1])
 
-cur.execute("select ua from  " + table_name + ";")
+cur.execute("select ip, request_url,status_code from  " + table_name + ";")
 print("====================sql注入开始匹配==================")
 while 1:
     res=cur.fetchone()
