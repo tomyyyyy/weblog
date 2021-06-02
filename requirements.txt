@@ -1,8 +1,0 @@
-Flask == 1.1.1
-flask-pymongo == 2.3.0
-flask_sqlalchemy == 2.4.4
-configparser == 4.0.2
-redis == 3.5.3
-mongo == 0.2.0
-pymysql == 0.10.1
-click == 7.1.2

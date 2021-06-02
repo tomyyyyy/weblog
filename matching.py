@@ -1,5 +1,6 @@
 # -*- coding: <encoding name> -*- 
 import pymysql
+import re
 
 conn=pymysql.connect('localhost','root','password')
 conn.select_db('logger')
@@ -10,7 +11,9 @@ while 1:
     res=cur.fetchone()
     if res is None:
         break
-    print (res[2],res[0],res[1])
+    if re.search("\{*.*?\}|>|<|\||select|information_schema|script",res[1], re.IGNORECASE) != None:
+        print (res[2],res[0],res[1])
 cur.close()
 conn.commit()
 conn.close()
+

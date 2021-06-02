@@ -26,6 +26,15 @@ parser.add_argument(
 args = vars(parser.parse_args())
 
 
+class malicious():
+    def __init__(self,ip):
+        alerts = get_malicious.ip(otx, ip)
+        if len(alerts) > 0:
+            return True
+        else:
+            return False
+        
+
 if args['ip']:
     alerts = get_malicious.ip(otx, args['ip'])
     if len(alerts) > 0:
