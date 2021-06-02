@@ -35,7 +35,7 @@ while 1:
     res=cur.fetchone()
     if res is None:
         break
-    if re.search("\{*.*?\}|>|<|\||and|or|information_schema",res[1], re.IGNORECASE) != None:
+    if re.search("\{*.*?\}|>|<|\||information_schema",res[1], re.IGNORECASE) != None:
         print (res[2],res[0],res[1])
 
 cur.close()
