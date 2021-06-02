@@ -5,13 +5,36 @@ import re
 conn=pymysql.connect('localhost','root','password')
 conn.select_db('logger')
 cur=conn.cursor()
-cur.execute("select ip, request_url,status_code from  logger_watcher_2021_05_03_09;")
-print("==========开始匹配============")
+table_name = 'logger_watcher_2021_05_03_09'
+
+
+cur.execute("select ip, request_url,status_code,ua from " + table_name + ";")
+print("====================UA信息开始匹配==================")
 while 1:
     res=cur.fetchone()
     if res is None:
         break
-    if re.search("\{*.*?\}|>|<|\||select|information_schema|script",res[1], re.IGNORECASE) != None:
+    if re.search("baidu|sougou|google|谷歌|360|",res[3], re.IGNORECASE) != None:
+        print (res[2],res[0],res[1])
+
+
+cur.execute("select ip, request_url,status_code,request_method from   " + table_name + ";")
+print("====================请求方式开始匹配==================")
+while 1:
+    res=cur.fetchone()
+    if res is None:
+        break
+    if re.search("GET|POST",res[3], re.IGNORECASE) == None:
+        print (res[2],res[0],res[1])
+
+
+cur.execute("select ua from  " + table_name + ";")
+print("====================sql注入开始匹配==================")
+while 1:
+    res=cur.fetchone()
+    if res is None:
+        break
+    if re.search("\{*.*?\}|>|<|\||and|or|1=1|information_schema|tables",res[1], re.IGNORECASE) != None:
         print (res[2],res[0],res[1])
 cur.close()
 conn.commit()
