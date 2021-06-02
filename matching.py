@@ -15,7 +15,8 @@ while 1:
     if res is None:
         break
     if re.search("baidu|sougou|google|谷歌|360|",res[3], re.IGNORECASE) != None:
-        print (res[2],res[0],res[1])
+        pass
+        # print (res[2],res[0],res[1])
 
 
 cur.execute("select ip, request_url,status_code,request_method from   " + table_name + ";")
