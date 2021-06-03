@@ -26,7 +26,7 @@ with open("urlinfo.txt","w") as f:
             break
         if re.search("GET|POST",res[3], re.IGNORECASE) == None:
             print (res[2],res[0],res[1],res[3])
-             f.write(res[2],res[0],res[1],res[3])
+            f.write(res[2],res[0],res[1],res[3])
 
     cur.execute("select ip, request_url,status_code from  " + table_name + ";")
     print("====================sql注入开始匹配==================")
@@ -36,7 +36,7 @@ with open("urlinfo.txt","w") as f:
             break
         if re.search("\{*.*?\}|>|<|\||information_schema|select",res[1], re.IGNORECASE) != None:
             print (res[2],res[0],res[1])
-             f.write(res[2],res[0],res[1])
+            f.write(res[2],res[0],res[1])
 
 cur.close()
 conn.commit()
