@@ -1,4 +1,3 @@
-# -*- coding: <encoding name> -*- 
 import pymysql
 import re
 
@@ -26,8 +25,7 @@ while 1:
     if res is None:
         break
     if re.search("GET|POST",res[3], re.IGNORECASE) == None:
-        pass
-        # print (res[2],res[0],res[1])
+        print (res[2],res[0],res[1])
 
 cur.execute("select ip, request_url,status_code from  " + table_name + ";")
 print("====================sql注入开始匹配==================")
@@ -35,7 +33,7 @@ while 1:
     res=cur.fetchone()
     if res is None:
         break
-    if re.search("\{*.*?\}|>|<|\||information_schema",res[1], re.IGNORECASE) != None:
+    if re.search("\{*.*?\}|>|<|\||information_schema|select",res[1], re.IGNORECASE) != None:
         print (res[2],res[0],res[1])
 
 cur.close()
