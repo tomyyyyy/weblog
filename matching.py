@@ -13,8 +13,7 @@ with open("urlinfo.txt","w") as f:
         res=cur.fetchone()
         if res is None:
             break
-        if re.search("baidu|sougou|google|谷歌|360|",res[3], re.IGNORECASE):
-            # print (re.search("baidu|sougou|google|谷歌|360|",res[3], re.IGNORECASE))
+        if re.search("baidu|sougou|google|360",res[3], re.IGNORECASE):
             info = [res[2],res[0],res[1]]
             f.write(str(info)+"\n")
 
@@ -26,7 +25,7 @@ with open("urlinfo.txt","w") as f:
         if res is None:
             break
         if re.search("GET|POST",res[3], re.IGNORECASE) == None:
-            # print (res[2],res[0],res[1],res[3])
+            print (res[2],res[0],res[1],res[3])
             info = [res[2],res[0],res[1],res[3]]
             f.write(str(info)+"\n")
 
