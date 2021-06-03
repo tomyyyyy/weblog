@@ -15,7 +15,8 @@ with open("urlinfo.txt","w") as f:
             break
         if re.search("baidu|sougou|google|谷歌|360|",res[3], re.IGNORECASE) != None:
             print (res[2],res[0],res[1])
-            f.write(res[2],res[0],res[1])
+            info = [res[2],res[0],res[1]]
+            f.write(info)
 
 
     cur.execute("select ip, request_url,status_code,request_method from   " + table_name + ";")
@@ -26,7 +27,8 @@ with open("urlinfo.txt","w") as f:
             break
         if re.search("GET|POST",res[3], re.IGNORECASE) == None:
             print (res[2],res[0],res[1],res[3])
-            f.write(res[2],res[0],res[1],res[3])
+            info = [res[2],res[0],res[1],res[3]]
+            f.write(info)
 
     cur.execute("select ip, request_url,status_code from  " + table_name + ";")
     print("====================sql注入开始匹配==================")
@@ -36,7 +38,8 @@ with open("urlinfo.txt","w") as f:
             break
         if re.search("\{*.*?\}|>|<|\||information_schema|select",res[1], re.IGNORECASE) != None:
             print (res[2],res[0],res[1])
-            f.write(res[2],res[0],res[1])
+            info = [res[2],res[0],res[1]]
+            f.write(info)
 
 cur.close()
 conn.commit()
