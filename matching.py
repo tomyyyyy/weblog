@@ -11,6 +11,7 @@ cf.read(r"config.ini")
 ua_rule = cf.get("rule","ua_rule")
 method_rule = cf.get("rule","method_rule")
 sql_rule = cf.get("rule","sql_rule")
+code_rule = cf.get("rule","code_rule")
 
 with open("urlinfo.txt","w") as f:
     cur.execute("select ip, request_url,status_code,ua from " + table_name + ";")
@@ -33,6 +34,17 @@ with open("urlinfo.txt","w") as f:
         if re.search(method_rule,res[3], re.IGNORECASE) == None:
             print (res[2],res[0],res[1],res[3])
             info = [res[2],res[0],res[1],res[3]]
+            f.write(str(info)+"\n")
+
+    cur.execute("select ip, request_url,status_code from  " + table_name + ";")
+    print("====================状态码匹配==================")
+    while 1:
+        res=cur.fetchone()
+        if res is None:
+            break
+        if re.search(code_rule,res[2], re.IGNORECASE):
+            print (res[2],res[0],res[1])
+            info = [res[2],res[0],res[1]]
             f.write(str(info)+"\n")
 
     cur.execute("select ip, request_url,status_code from  " + table_name + ";")
