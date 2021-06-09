@@ -37,7 +37,7 @@ with open("urlinfo.txt","w") as f:
             f.write(str(info)+"\n")
 
     cur.execute("select ip, request_url,status_code from  " + table_name + ";")
-    print("====================状态码匹配==================")
+    print("====================状态码开始匹配==================")
     while 1:
         res=cur.fetchone()
         if res is None:
@@ -48,7 +48,7 @@ with open("urlinfo.txt","w") as f:
             f.write(str(info)+"\n")
 
     cur.execute("select ip, request_url,status_code from  " + table_name + ";")
-    print("====================sql注入开始匹配==================")
+    print("====================URI开始匹配==================")
     while 1:
         res=cur.fetchone()
         if res is None:
