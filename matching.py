@@ -42,7 +42,7 @@ with open("urlinfo.txt","w") as f:
         res=cur.fetchone()
         if res is None:
             break
-        if re.search(code_rule,res[2], re.IGNORECASE):
+        if re.search(code_rule,str(res[2]), re.IGNORECASE):
             print (res[2],res[0],res[1])
             info = [res[2],res[0],res[1]]
             f.write(str(info)+"\n")
